@@ -1,0 +1,16 @@
+RewriteCond %{REQUEST_URI} !.*\.(ico|gif|jpg|jpeg|png|js|css|svg|csv|xlsx|ttf|woff|images|less)
+RewriteRule ^([^/]+)/? index.php?url=$1 [L,QSA]
+
+ 
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+
+php_flag safe_mode On
+
+php_value session.use_only_cookies 1
+php_value session.use_trans_sid 0
+php_value max_input_vars 10000
+
+
